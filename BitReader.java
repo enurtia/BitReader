@@ -1,3 +1,8 @@
+/*
+The purpose of this class is to take an input byte
+or byte array and create a stream of bits. These bits
+can then be sequentially read.
+*/
 public class BitReader
 {
     //Buffer array of input bytes.
