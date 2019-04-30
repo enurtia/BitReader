@@ -129,7 +129,10 @@ public class BitReader
             throw new IllegalArgumentException("Skip value can't be less than or equal to 0.");
         }
         
-        if(count == 0)
+        arrCount += (count+n)/8;
+        count = (n % 8 == 0) ? count : (count+n) % 8;
+        
+        if(arrCount < arrLength)
         {
             byte b = buffer[arrCount];
             String s = String.format("%8s", Integer.toBinaryString(((int)b) & 0xFF)).replace(' ', '0');
@@ -138,8 +141,5 @@ public class BitReader
                 currByte[i] = Integer.parseInt(s.substring(i,i+1));
             }
         }
-        
-        arrCount += (count+n)/8;
-        count = (n % 8 == 0) ? count : (count+n) % 8;
     }
 }
